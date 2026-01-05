@@ -1,6 +1,6 @@
 // ===============================
 // DZ Košnja & Urejanje okolice
-// Script.js
+// Script.js (Production Ready)
 // ===============================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,16 +10,16 @@ document.addEventListener("DOMContentLoaded", () => {
        FADE-IN ON SCROLL
     =============================== */
     const elements = document.querySelectorAll(
-      ".section, .service-box, .cta"
+      ".section, .service-box, .cta, .navbar"
     );
   
     if ("IntersectionObserver" in window) {
       const observer = new IntersectionObserver(
-        (entries) => {
+        (entries, obs) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add("fade-in");
-              observer.unobserve(entry.target);
+              obs.unobserve(entry.target);
             }
           });
         },
@@ -28,16 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
   
       elements.forEach((el) => observer.observe(el));
     } else {
-      // fallback za stare brskalnike
       elements.forEach((el) => el.classList.add("fade-in"));
     }
   
     /* ===============================
-       SMOOTH SCROLL (menu / anchors)
+       SMOOTH SCROLL (anchors only)
     =============================== */
-    const links = document.querySelectorAll('a[href^="#"]');
-  
-    links.forEach((link) => {
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
       link.addEventListener("click", (e) => {
         const target = document.querySelector(link.getAttribute("href"));
         if (target) {
@@ -51,27 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
        BACK TO TOP BUTTON
     =============================== */
     const backToTop = document.createElement("button");
-    backToTop.innerText = "⬆";
+    backToTop.className = "back-to-top";
     backToTop.setAttribute("aria-label", "Nazaj na vrh");
-    backToTop.style.cssText = `
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      padding: 10px 14px;
-      font-size: 18px;
-      border: none;
-      border-radius: 50%;
-      background: #2e7d32;
-      color: #fff;
-      cursor: pointer;
-      display: none;
-      z-index: 999;
-    `;
+    backToTop.innerHTML = "⬆";
   
     document.body.appendChild(backToTop);
   
     window.addEventListener("scroll", () => {
-      backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+      backToTop.classList.toggle("visible", window.scrollY > 300);
     });
   
     backToTop.addEventListener("click", () => {
