@@ -93,6 +93,10 @@ h2 {
   text-align: center;
 }
 
+.hero-small {
+  height: 50vh;
+}
+
 .hero-content {
   color: white;
   max-width: 900px;
@@ -149,7 +153,7 @@ h2 {
   font-size: 1.05rem;
 }
 
-/* ================= SERVICES / PRICING ================= */
+/* ================= SERVICES ================= */
 .services {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -184,35 +188,6 @@ h2 {
   color: #444;
 }
 
-/* PRICE */
-.price {
-  margin-bottom: 25px;
-}
-
-.price-from {
-  font-size: 0.85rem;
-  color: #777;
-  margin-right: 6px;
-}
-
-.price-value {
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: #2e7d32;
-}
-
-.price-period {
-  font-size: 0.9rem;
-  color: #555;
-  margin-left: 6px;
-}
-
-.price-note {
-  font-size: 1.05rem;
-  font-weight: bold;
-  color: #2e7d32;
-}
-
 /* POPULAR */
 .service-box.popular {
   border: 2px solid #2e7d32;
@@ -237,7 +212,7 @@ h2 {
   font-weight: bold;
 }
 
-/* ================= WHY / PROCESS ================= */
+/* ================= WHY LIST ================= */
 .why-list {
   list-style: none;
   max-width: 620px;
@@ -276,10 +251,40 @@ footer {
   font-size: 0.95rem;
 }
 
-/* ================= ANIMATION ================= */
+/* ================= BACK TO TOP ================= */
+.back-to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  background: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 999;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: #256628;
+}
+
+/* ================= ANIMATIONS ================= */
 .section,
 .service-box,
-.cta {
+.cta,
+.navbar {
   opacity: 0;
   transform: translateY(30px);
 }
