@@ -94,7 +94,7 @@ h2 {
 }
 
 .hero-small {
-  height: 50vh;
+  height: 35vh; /* ⬅ FIX: manjši hero za O-nas */
 }
 
 .hero-content {
@@ -151,6 +151,12 @@ h2 {
   max-width: 820px;
   margin: auto;
   font-size: 1.05rem;
+}
+
+/* 🔑 FIX: prvi content naj bo viden takoj */
+.hero + .section {
+  opacity: 1;
+  transform: none;
 }
 
 /* ================= SERVICES ================= */
